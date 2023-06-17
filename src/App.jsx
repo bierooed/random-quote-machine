@@ -59,10 +59,6 @@ function App() {
     changeColor();
   };
 
-  useEffect(() => {
-    getQuote();
-  }, []);
-
   return (
     <div id="quote-box">
       <div id="quote-text">
@@ -76,14 +72,16 @@ function App() {
         </h5>
       </div>
       <div id="buttons">
-        <a
-          href={`https://twitter.com/intent/tweet?text="${quoteInfo.quote}" - ${quoteInfo.author}`}
-          style={{ backgroundColor: color }}
-          id="tweet-quote"
-          target="_blank"
-        >
-          <img src={twitterIcon} />
-        </a>
+        {!!quoteInfo.quote && (
+          <a
+            href={`https://twitter.com/intent/tweet?text="${quoteInfo.quote}" - ${quoteInfo.author}`}
+            style={{ backgroundColor: color }}
+            id="tweet-quote"
+            target="_blank"
+          >
+            <img src={twitterIcon} />
+          </a>
+        )}
         <button
           id="new-quote"
           style={{ backgroundColor: color }}
