@@ -56,6 +56,7 @@ function App() {
     <>
       <div id="quote-box">
         <div id="quote-text">
+          <span>❝ ❞</span>
           <h5>{quoteInfo.quote}</h5>
         </div>
         <div id="quote-author">
