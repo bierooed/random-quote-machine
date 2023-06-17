@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
+import twitterIcon from "./assets/twitterIcon.svg";
 
 function App() {
   const [quoteInfo, setQuoteInfo] = useState({
@@ -71,6 +72,16 @@ function App() {
         </h5>
       </div>
       <div id="buttons">
+        {!!quoteInfo.quote && (
+          <a
+            href={`https://twitter.com/intent/tweet?text="${quoteInfo.quote}" - ${quoteInfo.author}`}
+            style={{ backgroundColor: color }}
+            id="tweet-quote"
+            target="_blank"
+          >
+            <img src={twitterIcon} />
+          </a>
+        )}
         <button
           id="new-quote"
           style={{ backgroundColor: color }}
