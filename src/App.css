@@ -3,6 +3,8 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
 .logo {
@@ -44,11 +46,31 @@
 #quote-box {
   background-color: white;
   padding: 40px 50px;
-  width: 400px;
+  width: 80vh;
   min-height: 200px;
   border-radius: 5px;
 }
 
-#quote-text {
+#quote-text #text {
   font-size: 1.75em;
+}
+
+#quote-box #buttons {
+  display: flex;
+  justify-content: center;
+  color: white;
+  width: 100%;
+}
+
+#buttons button {
+  height: auto;
+}
+
+@media only screen and (max-width: 870px) {
+  #root {
+    width: 100%;
+  }
+  #quote-box {
+    width: 100%;
+  }
 }

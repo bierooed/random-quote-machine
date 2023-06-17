@@ -6,10 +6,10 @@ function App() {
     quote: "",
     author: "",
   });
-  const [color, setColor] = useState("#27ae60");
+  const [color, setColor] = useState("#2c3e50");
 
   useEffect(() => {
-    getQuote();
+    document.body.style.backgroundColor = color;
   }, []);
 
   const getRandomColor = () => {
@@ -36,7 +36,7 @@ function App() {
     document.body.style.backgroundColor = newColor;
   };
 
-  const getQuote = async () => {
+  const fetchData = async () => {
     const options = {
       method: "POST",
       headers: {
@@ -48,29 +48,38 @@ function App() {
       options
     );
     const data = await response.json();
-    setQuoteInfo({ quote: data[0].quote, author: data[0].author });
+    return data;
+  };
+
+  const getQuote = async () => {
+    const data = await fetchData();
+    const { quote, author } = data[0];
+    setQuoteInfo({ quote, author });
     changeColor();
   };
 
   return (
-    <>
-      <div id="quote-box">
-        <div id="quote-text">
-          <span>❝ ❞</span>
-          <h5>{quoteInfo.quote}</h5>
-        </div>
-        <div id="quote-author">
-          <h5 style={{ textAlign: "end" }}> - {quoteInfo.author}</h5>
-        </div>
-        <div id="buttons">
-          {!!quoteInfo.quote && (
-            <button style={{ backgroundColor: color }} onClick={getQuote}>
-              Get Quote
-            </button>
-          )}
-        </div>
+    <div id="quote-box">
+      <div id="quote-text">
+        <span>❝ ❞</span>
+        <h5 id="text">{quoteInfo.quote}</h5>
       </div>
-    </>
+      <div id="quote-author">
+        <h5 id="author" style={{ textAlign: "end" }}>
+          {" "}
+          - {quoteInfo.author}
+        </h5>
+      </div>
+      <div id="buttons">
+        <button
+          id="new-quote"
+          style={{ backgroundColor: color }}
+          onClick={getQuote}
+        >
+          Get Quote
+        </button>
+      </div>
+    </div>
   );
 }
 
