@@ -40,3 +40,15 @@
 .read-the-docs {
   color: #888;
 }
+
+#quote-box {
+  background-color: white;
+  padding: 40px 50px;
+  width: 400px;
+  min-height: 200px;
+  border-radius: 5px;
+}
+
+#quote-text {
+  font-size: 1.75em;
+}
